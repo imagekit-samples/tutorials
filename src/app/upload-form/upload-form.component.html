@@ -1,0 +1,51 @@
+<form class="upload-form">
+  <h1>Upload File</h1>
+
+  <label
+    for="file"
+    (dragover)="handleDragOver($event)"
+    (drop)="handleDrop($event)"
+    (dragleave)="handleDragLeave($event)"
+  >
+    <i class="ph ph-upload"></i>
+
+    <span>
+      Drag & drop or
+      <span style="color: #0c7ce5; display: inline-block; margin: 0px 2px"
+        >browse</span
+      >
+      your files
+    </span>
+  </label>
+
+  <input
+    id="file"
+    type="file"
+    name="file"
+    multiple
+    (change)="onFileSelected($event)"
+  />
+
+  <div class="result" [style.display]="outputBoxVisible ? 'flex' : 'none'">
+    <i class="ph ph-file"></i>
+    <div class="file-details">
+      <span class="file-name">{{ fileName }}</span>
+      <ng-container *ngIf="uploadStatus === 200">
+        <div class="progress-bar">
+          <div class="progress" [style.width]="progress"></div>
+        </div>
+        <span class="file-size">{{ fileSize }}</span>
+      </ng-container>
+    </div>
+
+    <div class="upload-result">
+      <span>{{ uploadResult }}</span>
+      <ng-container *ngIf="uploadStatus === 200; else error">
+        <i class="ph ph-check-circle"></i>
+      </ng-container>
+      <ng-template #error>
+        <i class="ph ph-x-circle"></i>
+      </ng-template>
+    </div>
+  </div>
+</form>
