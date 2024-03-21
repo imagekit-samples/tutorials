@@ -5,7 +5,6 @@
     for="file"
     (dragover)="handleDragOver($event)"
     (drop)="handleDrop($event)"
-    (dragleave)="handleDragLeave($event)"
   >
     <i class="ph ph-upload"></i>
 
@@ -22,8 +21,7 @@
     id="file"
     type="file"
     name="file"
-    multiple
-    (change)="onFileSelected($event)"
+    (change)="onFileSelected($event,null)"
   />
 
   <div class="result" [style.display]="outputBoxVisible ? 'flex' : 'none'">

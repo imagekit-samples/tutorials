@@ -6,131 +6,131 @@
 }
 
 .upload-form {
-display: flex;
-max-width: 29rem;
-padding: 20px;
-flex-flow: column;
-margin: 100px auto 1rem auto;
-background-color: #fff;
-box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.15);
+  display: flex;
+  max-width: 29rem;
+  padding: 20px;
+  flex-flow: column;
+  margin: 100px auto 1rem auto;
+  background-color: #fff;
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.15);
 }
 
 .upload-form h1 {
-margin: 0;
-padding: 1rem 0px 0.5rem;
-font-size: 1.25rem;
-font-weight: 700;
-color: #434850;
-text-align: left;
+  margin: 0;
+  padding: 1rem 0px 0.5rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #434850;
+  text-align: left;
 }
 
 .upload-form label {
-display: flex;
-flex-flow: column;
-justify-content: center;
-align-items: center;
-border: 1px dashed #e6e8ec;
-color: #000000;
-padding: 0.5rem 0.75rem;
-font-weight: 500;
-font-size: 0.875rem;
-margin: 0.5rem 0;
-border-radius: 0.25rem;
-cursor: pointer;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px dashed #e6e8ec;
+  color: #000000;
+  padding: 0.5rem 0.75rem;
+  font-weight: 500;
+  font-size: 0.875rem;
+  margin: 0.5rem 0;
+  border-radius: 0.25rem;
+  cursor: pointer;
 }
 
 .upload-form label i {
-padding: 0.25rem 0;
-color: #0c7ce5;
-font-size: 1.1rem;
+  padding: 0.25rem 0;
+  color: #0c7ce5;
+  font-size: 1.1rem;
 }
 
 .upload-form label span {
-display: flex;
-align-items: center;
-justify-content: center;
-font-size: 0.9rem;
-word-break: break-all;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  word-break: break-all;
 }
 
 .upload-form label:hover {
-background-color: #f7f8f9;
-border: 1px dashed #e3e5ea;
+  background-color: #f7f8f9;
+  border: 1px dashed #e3e5ea;
 }
 
 .upload-form input[type="file"] {
-appearance: none;
-visibility: hidden;
-height: 0;
-width: 0;
-padding: 0;
-margin: 0;
+  appearance: none;
+  visibility: hidden;
+  height: 0;
+  width: 0;
+  padding: 0;
+  margin: 0;
 }
 
 .upload-form .result {
-display: flex;
-background: #ecf6ff;
-border-radius: 0.25rem;
-gap: 0.5rem;
-padding: 0.5rem;
+  display: flex;
+  background: #ecf6ff;
+  border-radius: 0.25rem;
+  gap: 0.5rem;
+  padding: 0.5rem;
 }
 
 .upload-form .result * {
-font-size: 0.7rem;
+  font-size: 0.7rem;
 }
 
 .upload-form .result .ph-file {
-font-size: 1.5rem;
+  font-size: 1.5rem;
 }
 
 .upload-form .result span {
-display: block;
+  display: block;
 }
 
 .upload-form .result .file-details {
-display: flex;
-flex-flow: column;
-justify-content: center;
-align-items: flex-start;
-gap: 0.25rem;
-flex: 1;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 0.25rem;
+  flex: 1;
 }
 
 .upload-form .result .file-details span.file-name {
-color: #000000;
-font-weight: 600;
+  color: #000000;
+  font-weight: 600;
 }
 
 .upload-form .result .file-details span.file-size {
-color: #a0aeba;
+  color: #a0aeba;
 }
 
 .upload-form .result .upload-result {
-display: flex;
-justify-content: flex-end;
-align-items: center;
-gap: 0.25rem;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0.25rem;
 }
 
 .upload-form .result .upload-result .ph-check-circle {
-color: #23c925;
-font-size: 1rem;
+  color: #23c925;
+  font-size: 1rem;
 }
 
 .upload-form .result .upload-result .ph-x-circle {
-color: #c94647;
-font-size: 1rem;
+  color: #c94647;
+  font-size: 1rem;
 }
 
 .upload-form .result .progress-bar {
-width: 100%;
-height: 0.25rem;
-background-color: #e3e5ea;
-border-radius: 0.25rem;
-overflow: hidden;
+  width: 100%;
+  height: 0.25rem;
+  background-color: #e3e5ea;
+  border-radius: 0.25rem;
+  overflow: hidden;
 }
 
 .upload-form .result .progress-bar .progress {
-height: 100%;
-background-color: #0c7ce5;
+  height: 100%;
+  background-color: #0c7ce5;
 }
