@@ -19,12 +19,6 @@ export class UploadFormComponent {
   constructor() {}
 
   onFileSelected(event: any, inputFile: File | null) {
-    this.outputBoxVisible = false;
-    this.progress = `0%`;
-    this.uploadResult = '';
-    this.fileName = '';
-    this.fileSize = '';
-    this.uploadStatus = undefined;
     const file: File = inputFile || event.target.files[0];
 
     if (file) {
