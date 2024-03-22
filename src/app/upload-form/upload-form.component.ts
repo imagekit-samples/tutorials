@@ -30,7 +30,7 @@ export class UploadFormComponent {
       formData.append('file', file);
 
       const xhr = new XMLHttpRequest();
-      xhr.open('POST', 'http://localhost:4000/upload', true);
+      xhr.open('POST', '/api/upload', true);
 
       xhr.upload.onprogress = (progressEvent) => {
         if (progressEvent.lengthComputable) {
