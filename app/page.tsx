@@ -46,7 +46,6 @@ export default function Home() {
   const handlePlayerReady = (player: any) => {
     playerRef.current = player;
 
-    // debugger;
     console.log(player.qualityLevels())
 
     // You can handle player events here, for example:
@@ -63,7 +62,6 @@ export default function Home() {
     <main >
       <div className={styles.container}>
         <VideoJS options={videoJsOptionsM3u8} onReady={handlePlayerReady} />
-        <VideoJS options={videoJsOptionsMpd} onReady={handlePlayerReady} />
       </div>
     </main>
   );
