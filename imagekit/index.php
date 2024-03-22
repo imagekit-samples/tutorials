@@ -269,7 +269,7 @@
         cb(new Error("Failed to get token"));
       }
 
-      xhr.open("GET", "http://localhost/php-upload/imagekit-token.php?token=123");
+      xhr.open("GET", "imagekit/imagekit-token.php");
 
       xhr.send();
     }

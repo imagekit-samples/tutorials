@@ -198,7 +198,7 @@
 </head>
 
 <body>
-  <form class="upload-form" action="upload.php" method="post" enctype="multipart/form-data">
+  <form class="upload-form" action="native/upload.php" method="post" enctype="multipart/form-data">
 
     <h1>Upload File</h1>
 
