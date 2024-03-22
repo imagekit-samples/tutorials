@@ -21,14 +21,14 @@
     id="file"
     type="file"
     name="file"
-    (change)="onFileSelected($event,null)"
+    (change)="onFileSelected($event, null)"
   />
 
   <div class="result" [style.display]="outputBoxVisible ? 'flex' : 'none'">
     <i class="ph ph-file"></i>
     <div class="file-details">
       <span class="file-name">{{ fileName }}</span>
-      <ng-container *ngIf="uploadStatus === 200">
+      <ng-container *ngIf="uploadStatus === 200 || uploadStatus === undefined">
         <div class="progress-bar">
           <div class="progress" [style.width]="progress"></div>
         </div>
@@ -36,7 +36,7 @@
       </ng-container>
     </div>
 
-    <div class="upload-result">
+    <div class="upload-result" [style.display]="uploadStatus ? 'flex' : 'none'">
       <span>{{ uploadResult }}</span>
       <ng-container *ngIf="uploadStatus === 200; else error">
         <i class="ph ph-check-circle"></i>
