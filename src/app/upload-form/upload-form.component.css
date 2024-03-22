@@ -53,6 +53,12 @@
   word-break: break-all;
 }
 
+.upload-form label span span {
+  color: #0c7ce5;
+  display: inline-block;
+  margin: 0px 2px;
+}
+
 .upload-form label:hover {
   background-color: #f7f8f9;
   border: 1px dashed #e3e5ea;
