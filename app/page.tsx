@@ -12,7 +12,7 @@ export default function Home() {
   const videoJsOptionsM3u8 = {
     controls: true,
     autoplay: false,
-    width: 240,
+    width: 400,
     sources: [
       {
         src: 'https://ik.imagekit.io/ikmedia/sample-video.mp4/ik-master.m3u8?tr=sr-240_360_480_720',
@@ -29,7 +29,7 @@ export default function Home() {
   const videoJsOptionsMpd = {
     controls: true,
     autoplay: false,
-    width: 240,
+    width: 400,
     sources: [
       {
         src: 'https://ik.imagekit.io/demo/sample-video.mp4/ik-master.mpd?tr=sr-240_360_480_720_1080',
