@@ -1,6 +1,14 @@
-<main class="main">
+<main>
+  <h1>HLS Demo</h1>
   <app-video-player
-    videoSource="https://ik.imagekit.io/ikmedia/example_video.mp4"
+    videoSource="https://ik.imagekit.io/ikmedia/example_video.mp4/ik-master.m3u8?tr=sr-240_360_480_720_1080"
+    poster="https://ik.imagekit.io/ikmedia/example_video.mp4/ik-thumbnail.jpg"
+    aspectRatio="16:9"
+    [fluid]=true
+  />
+  <h1>MPEG-DASH Demo</h1>
+  <app-video-player
+    videoSource="https://ik.imagekit.io/ikmedia/example_video.mp4/ik-master.mpd?tr=sr-240_360_480_720_1080"
     poster="https://ik.imagekit.io/ikmedia/example_video.mp4/ik-thumbnail.jpg"
     aspectRatio="16:9"
     [fluid]=true
