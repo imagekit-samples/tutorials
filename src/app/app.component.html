@@ -1,0 +1,35 @@
+<main class="main">
+  This video player provides default playback controls available in this browser
+  <app-video-player
+    [videoSources]="
+      [
+        { src: 'https://ik.imagekit.io/ikmedia/example_video.mp4?tr=f-webm', mimeType: 'video/webm' },
+        { src: 'https://ik.imagekit.io/ikmedia/example_video.mp4?tr=f-mp4', mimeType: 'video/mp4' },
+      ]
+    "
+    posterURL="https://ik.imagekit.io/ikmedia/example_video.mp4/ik-thumbnail.jpg"
+    height="300"
+    width="400"
+    [controls]="true"
+  />
+
+  <hr /> <!-- ------------ -->
+  
+  This video player start playing as it loads and continues to play in a loop.
+  <br>
+  The user is not provided with any playback controls.
+  <app-video-player
+    [videoSources]="
+      [
+        { src: 'https://ik.imagekit.io/ikmedia/example_video.mp4?tr=f-webm', mimeType: 'video/webm' },
+        { src: 'https://ik.imagekit.io/ikmedia/example_video.mp4?tr=f-mp4', mimeType: 'video/mp4' },
+      ]
+    "
+    poster="https://ik.imagekit.io/ikmedia/example_video.mp4/ik-thumbnail.jpg"
+    height="300"
+    width="400"
+    [controls]="false"
+    [autoplay]="true"
+    [loop]="true"
+  />
+</main>
