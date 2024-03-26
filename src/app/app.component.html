@@ -1,35 +1,17 @@
-<main class="main">
-  This video player provides default playback controls available in this browser
-  <app-video-player
-    [videoSources]="
-      [
-        { src: 'https://ik.imagekit.io/ikmedia/example_video.mp4?tr=f-webm', mimeType: 'video/webm' },
-        { src: 'https://ik.imagekit.io/ikmedia/example_video.mp4?tr=f-mp4', mimeType: 'video/mp4' },
-      ]
-    "
-    posterURL="https://ik.imagekit.io/ikmedia/example_video.mp4/ik-thumbnail.jpg"
-    height="300"
-    width="400"
-    [controls]="true"
-  />
 
-  <hr /> <!-- ------------ -->
-  
-  This video player start playing as it loads and continues to play in a loop.
-  <br>
-  The user is not provided with any playback controls.
-  <app-video-player
-    [videoSources]="
-      [
-        { src: 'https://ik.imagekit.io/ikmedia/example_video.mp4?tr=f-webm', mimeType: 'video/webm' },
-        { src: 'https://ik.imagekit.io/ikmedia/example_video.mp4?tr=f-mp4', mimeType: 'video/mp4' },
-      ]
-    "
-    poster="https://ik.imagekit.io/ikmedia/example_video.mp4/ik-thumbnail.jpg"
-    height="300"
-    width="400"
-    [controls]="false"
-    [autoplay]="true"
-    [loop]="true"
-  />
-</main>
+
+<style>
+  :host {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-size: 14px;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+  }
+</style>
+
+<div class="content" role="main">
+  <h1>Welcome to {{title}}!</h1>
+  <h2>Start editing to see some magic happen</h2>
+</div>
