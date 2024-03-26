@@ -1,0 +1,41 @@
+{
+  "setupTasks": [
+    {
+      "name": "Install Server Dependencies",
+      "command": "cd server && npm install"
+    },
+    {
+      "name": "Install Dependencies",
+      "command": "npm install"
+    }
+  ],
+  "tasks": {
+    "start": {
+      "name": "start",
+      "command": "npm run start",
+      "runAtStart": true,
+      "preview": {
+        "port": 4200
+      }
+    },
+    "build": {
+      "name": "build",
+      "command": "ng build",
+      "runAtStart": false
+    },
+    "test": {
+      "name": "test",
+      "command": "ng test",
+      "runAtStart": false
+    },
+    "help": {
+      "name": "help",
+      "command": "ng help",
+      "runAtStart": false
+    },
+    "install": {
+      "name": "install dependencies",
+      "command": "npm install"
+    }
+  }
+}
