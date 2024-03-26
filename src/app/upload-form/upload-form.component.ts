@@ -18,14 +18,14 @@ export class UploadFormComponent {
 
   constructor() {}
 
-  onFileSelected(event: any, inputFile: File | null) {
+  onFileSelected(event: any) {
     this.outputBoxVisible = false;
     this.progress = `0%`;
     this.uploadResult = '';
     this.fileName = '';
     this.fileSize = '';
     this.uploadStatus = undefined;
-    const file: File = inputFile || event.target.files[0];
+    const file: File = event.dataTransfer?.files[0] || event.target?.files[0];
 
     if (file) {
       this.fileName = file.name;
@@ -71,7 +71,7 @@ export class UploadFormComponent {
     event.preventDefault();
     if (event.dataTransfer) {
       const file: File = event.dataTransfer.files[0];
-      this.onFileSelected(event, event.dataTransfer.files[0]);
+      this.onFileSelected(event);
     }
   }
 }
