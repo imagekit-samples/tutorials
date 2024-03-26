@@ -1,3 +1,4 @@
+"use strict";
 "use client"; // to ensure client side execution as we are using client-side hooks like useRef
 import styles from "./page.module.css";
 import { useRef } from "react";
