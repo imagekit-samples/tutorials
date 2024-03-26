@@ -1,8 +1,8 @@
-import { Component, Input } from "@angular/core";
-import { NgFor } from "@angular/common";
+import { Component, Input } from '@angular/core';
+import { NgFor } from '@angular/common';
 
 @Component({
-  selector: "app-video-player",
+  selector: 'app-video-player',
   standalone: true,
   imports: [NgFor],
   template: `

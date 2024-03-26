@@ -1,26 +1,32 @@
 <main class="main">
-  <p>video player provides default playback controls available in this browser</p>
+  <p>This video player provides default playback controls available in this browser</p>
   <app-video-player
-    src="https://ik.imagekit.io/ikmedia/example_video.mp4"
+    [videoSources]="
+      [
+        { src: 'https://ik.imagekit.io/ikmedia/example_video.mp4?tr=f-webm', mimeType: 'video/webm' },
+        { src: 'https://ik.imagekit.io/ikmedia/example_video.mp4?tr=f-mp4', mimeType: 'video/mp4' },
+      ]
+    "
+    posterURL="https://ik.imagekit.io/ikmedia/example_video.mp4/ik-thumbnail.jpg"
     height="300"
     width="400"
-    poster="https://ik.imagekit.io/ikmedia/example_video.mp4/ik-thumbnail.jpg"
     [controls]="true"
   />
 
   <hr /> <!-- ------------ -->
   
-  <p>
-    This video player start playing as it loads and continues to play in a loop.
-    <br />
-    The user is not provided with any playback controls.
-  </p>
-  
+  <p>This video player start playing as it loads and continues to play in a loop.</p>
+  <p>The user is not provided with any playback controls.</p>
   <app-video-player
-    src="https://ik.imagekit.io/ikmedia/example_video.mp4"
+    [videoSources]="
+      [
+        { src: 'https://ik.imagekit.io/ikmedia/example_video.mp4?tr=f-webm', mimeType: 'video/webm' },
+        { src: 'https://ik.imagekit.io/ikmedia/example_video.mp4?tr=f-mp4', mimeType: 'video/mp4' },
+      ]
+    "
+    poster="https://ik.imagekit.io/ikmedia/example_video.mp4/ik-thumbnail.jpg"
     height="300"
     width="400"
-    poster="https://ik.imagekit.io/ikmedia/example_video.mp4/ik-thumbnail.jpg"
     [controls]="false"
     [autoplay]="true"
     [loop]="true"
