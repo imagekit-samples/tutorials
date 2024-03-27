@@ -234,8 +234,8 @@
     /* Add JavaScript here */
 
     const imagekit = new ImageKit({
-      publicKey: "YOUR_PUBLIC_KEY",
-      urlEndpoint: "YOUR_URL_ENDPOINT",
+      publicKey: '<?php echo $_ENV["PUBLIC_KEY"]; ?>',
+      urlEndpoint: '<?php echo $_ENV["URL_ENDPOINT"]; ?>',
     });
 
     const form = document.querySelector('.upload-form');
