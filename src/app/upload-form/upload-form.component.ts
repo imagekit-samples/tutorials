@@ -18,7 +18,7 @@ export class UploadFormComponent {
 
   constructor() {}
 
-  onFileSelected(event: any) {
+  onFileSelected(event) {
     this.outputBoxVisible = false;
     this.progress = `0%`;
     this.uploadResult = '';
