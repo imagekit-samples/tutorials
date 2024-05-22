@@ -1,0 +1,61 @@
+<div className="App">
+  <h1>ImageKit Angular file upload</h1>
+  <ik-upload
+    #upload
+    (onSuccess)="handleUploadSuccess($event)"
+    (onError)="handleUploadError($event)"
+    [buttonRef]="myBtn"
+    [authenticator]="authenticator"
+    [validateFile]="validateFileFunction"
+    [onUploadStart]="onUploadStartFunction"
+    [onUploadProgress]="onUploadProgressFunction"
+  >
+  </ik-upload>
+  <form class="upload-form">
+    <h1>Upload File</h1>
+
+    <button type="button" #myBtn>
+      <i class="ph ph-upload"></i>
+      <span>
+        <span>Browse</span>
+        your files
+      </span>
+    </button>
+    <div class="result" [style.display]="outputBoxVisible ? 'flex' : 'none'">
+      <i class="ph ph-file"></i>
+      <div class="file-details">
+        <span class="file-name">{{ fileName }}</span>
+        <ng-container
+          *ngIf="uploadStatus === 200 || uploadStatus === undefined"
+        >
+          <div class="progress-bar">
+            <div class="progress" [style.width]="progress"></div>
+          </div>
+          <span class="file-size">{{ fileSize }}</span>
+        </ng-container>
+      </div>
+
+      <div
+        class="upload-result"
+        [style.display]="uploadStatus ? 'flex' : 'none'"
+      >
+        <span>{{ uploadResult }}</span>
+        <ng-container *ngIf="uploadStatus === 200; else error">
+          <i class="ph ph-check-circle"></i>
+        </ng-container>
+        <ng-template #error>
+          <i class="ph ph-x-circle"></i>
+        </ng-template>
+      </div>
+    </div>
+    <ng-container
+      *ngIf="
+        outputBoxVisible && (uploadStatus === 200 || uploadStatus === undefined)
+      "
+    >
+      <div class="result-container">
+        <button (click)="onAbortFunction()" type="button">Abort</button>
+      </div>
+    </ng-container>
+  </form>
+</div>
