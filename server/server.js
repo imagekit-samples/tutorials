@@ -3,7 +3,6 @@ const multer = require("multer");
 const path = require("path");
 const cors = require("cors");
 const dotenv = require('dotenv');
-const router = express.Router();
 
 dotenv.config();
 
@@ -70,7 +69,7 @@ app.use((err, req, res, next) => {
 });
 
 
-router.get("/auth", function(req, res) {
+app.get("/auth", function(req, res) {
   var token = req.query.token || uuid.v4();
   var expire = req.query.expire || parseInt(Date.now()/1000)+2400;
   var privateAPIKey = `${privateKey}`;
@@ -82,8 +81,6 @@ router.get("/auth", function(req, res) {
       signature : signature
   });
 });
-
-app.use("/",router);
 
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
