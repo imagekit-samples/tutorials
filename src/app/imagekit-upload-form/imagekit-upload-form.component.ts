@@ -65,8 +65,8 @@ export class ImagekitUploadFormComponent {
     this.fileName = '';
     this.fileSize = '';
     this.uploadStatus = undefined;
-    const file: File = event.target?.files[0];
-    if (file.name) {
+    if (event.target?.files?.length) {
+      const file: File = event.target?.files[0];
       this.fileName = file.name;
       this.fileSize = `${(file.size / 1024).toFixed(2)} KB`;
       this.outputBoxVisible = true;
