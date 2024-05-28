@@ -14,8 +14,8 @@ import { ImagekitUploadFormComponent } from './imagekit-upload-form/imagekit-upl
     BrowserModule,
     AppRoutingModule,
     ImagekitioAngularModule.forRoot({
-      urlEndpoint: "your_endpoint",
-      publicKey: "your_public_key",
+      urlEndpoint: "https://ik.imagekit.io/igi7ywjzdi",
+      publicKey: "public_X140up/8w//8965Hp/pI8VCM6QY=",
     })
   ],
   providers: [],
