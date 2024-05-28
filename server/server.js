@@ -14,6 +14,11 @@ const PORT = 4000;
 
 app.use(cors());
 
+app.use((req, _, next) => {
+  console.log("Request received at:", req.path);
+  next();
+});
+
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, "uploads/");
