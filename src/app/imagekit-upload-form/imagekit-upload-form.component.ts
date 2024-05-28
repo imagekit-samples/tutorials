@@ -17,7 +17,7 @@ export class ImagekitUploadFormComponent {
   constructor() {}
 
   title = 'app';
-  @ViewChild('upload') uploadComponent: IkUploadComponent;
+  @ViewChild('upload') uploadComponent: IkUploadComponent | undefined;
   uploadErrorMessage = '';
 
   authenticator = async () => {
@@ -33,7 +33,7 @@ export class ImagekitUploadFormComponent {
       const data = await response.json();
       const { signature, expire, token } = data;
       return { signature, expire, token };
-    } catch (error) {
+    } catch (error: any) {
       throw new Error(`Authentication request failed: ${error.message}`);
     }
   };
