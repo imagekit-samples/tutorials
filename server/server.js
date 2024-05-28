@@ -6,7 +6,6 @@ const dotenv = require('dotenv');
 
 dotenv.config();
 
-const uuid = require('uuid');
 const crypto = require("crypto");
 
 const privateKey = process.env.PRIVATE_KEY;
@@ -70,7 +69,7 @@ app.use((err, req, res, next) => {
 
 
 app.get("/auth", function(req, res) {
-  var token = req.query.token || uuid.v4();
+  var token = req.query.token || crypto.randomUUID();
   var expire = req.query.expire || parseInt(Date.now()/1000)+2400;
   var privateAPIKey = `${privateKey}`;
   var signature = crypto.createHmac('sha1', privateAPIKey).update(token+expire).digest('hex');
