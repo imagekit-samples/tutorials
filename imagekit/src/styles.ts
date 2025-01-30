@@ -1,0 +1,148 @@
+import { CSSProperties } from "react";
+
+const styles: Record<string, CSSProperties> = {
+  heading: {
+    color: "white",
+    textAlign: "left",
+    marginBottom: "1em",
+  },
+  uploadBox: {
+    padding: "4em 7em",
+    border: "1px solid white",
+    borderRadius: "5px",
+    backgroundColor: "#1a1a1a",
+    marginBottom: "2em",
+    cursor: "pointer",
+  },
+  content: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    gap: "1em",
+  },
+  circle: {
+    padding: "1.25em",
+    backgroundColor: "#3a3a3a",
+    borderRadius: "100%",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  uploadText: {
+    margin: 0,
+    color: "white",
+    textAlign: "center",
+  },
+  uploadSubtext: {
+    margin: 0,
+    color: "#3a3a3a",
+    textAlign: "center",
+  },
+  fileList: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "1em",
+  },
+  fileElement: {
+    display: "flex",
+    padding: "1em",
+    border: "1px solid white",
+    borderRadius: "5px",
+    backgroundColor: "#1a1a1a",
+    alignItems: "flex-start",
+    textAlign: "left",
+    gap: "0.75em",
+  },
+  fileIcon: {
+    padding: "0.5em",
+    backgroundColor: "#3a3a3a",
+    marginRight: "1em",
+    borderRadius: "4px",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  fileDetails: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "0.25em",
+  },
+  fileName: {
+    color: "white",
+    margin: 0,
+    fontWeight: 600,
+  },
+  fileSize: {
+    color: "#808080",
+    margin: 0,
+    fontSize: "0.875em",
+  },
+  filler: {
+    flex: 1,
+  },
+  trash: {
+    backgroundColor: "transparent",
+    padding: "0.5em",
+    borderRadius: "4px",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    border: "none",
+    cursor: "pointer",
+  },
+  uploadButtonContainer: {
+    display: "flex",
+    width: "100%",
+    justifyContent: "flex-end",
+    alignItems: "flex-end",
+  },
+  uploadButton: {
+    backgroundColor: "#0450d5",
+    color: "white",
+    borderRadius: "4px",
+    border: "none",
+    padding: "0.5em",
+    cursor: "pointer",
+    marginTop: "1em",
+  },
+  uploadingText: {
+    color: "white",
+    margin: 0,
+  },
+  successText: {
+    color: "#22c55e",
+    margin: 0,
+  },
+  errorText: {
+    color: "#ef4444",
+    margin: 0,
+  },
+  uploadingProgress: {
+    backgroundColor: "#3a3a3a",
+    height: "24px",
+    marginTop: "12px",
+    maxWidth: "200px",
+    width: "100%",
+    textAlign: "center",
+    lineHeight: "24px",
+    position: "relative",
+  },
+  uploadingBar: {
+    backgroundColor: "#0450d5",
+    height: "24px",
+    position: "absolute",
+    width: "100%",
+    zIndex: 0,
+  },
+  uploadPercent: {
+    color: "white",
+    margin: 0,
+    lineHeight: "24px",
+    position: "absolute",
+    left: "50%",
+    transform: "translate(-50%, 0%)",
+    zIndex: 1,
+  },
+};
+
+export default styles;
