@@ -4,14 +4,17 @@ import { ImageKitProvider, IKUpload } from "imagekitio-next";
 import styles from "../page.module.css";
 import { useState, useEffect, useRef, useCallback } from "react";
 
-
 export default function ImageKitUpload() {
   const [uploadProgress, setUploadProgress] = useState(0);
+  const [uploadStatus, setUploadStatus] = useState(null);
+  const [uploadStats, setUploadStats] = useState({ loaded: 0, total: 0 });
+  const [isUploading, setIsUploading] = useState(false);
   const [isDragging, setIsDragging] = useState(false);
-  const [isFileValid, setIsFileValid] = useState(true)
-const [fileValidationError, setFileValidationError] = useState(undefined)
   const ikUploadRef = useRef(null)
+  const [isFileValid, setIsFileValid] = useState(true)
+  const [fileValidationError, setFileValidationError] = useState(undefined)
 
+  // This function fires a "change" event on the IKUpload's internal <input> element
   const uploadViaIkSdk = useCallback((files) => {
     if (ikUploadRef?.current) {
       const nativeInputValueSetter = Object.getOwnPropertyDescriptor(
@@ -23,23 +26,7 @@ const [fileValidationError, setFileValidationError] = useState(undefined)
     }
   }, [ikUploadRef])
 
-  useEffect(() => {
-    const handlePaste = (e) => {
-      e.preventDefault();
-      const files = e.clipboardData?.files;
-      
-      if (!files || files.length === 0) return;
-
-      uploadViaIkSdk(files)
-    };
-
-    window.addEventListener('paste', handlePaste);
-
-    return () => {
-      window.removeEventListener('paste', handlePaste);
-    };
-  }, []);
-
+  // Call our backend API to generate short-lived authentication credentials using our ImageKit API key
   const authenticator = async () => {
     try {
       const response = await fetch("/api/auth");
@@ -57,40 +44,55 @@ const [fileValidationError, setFileValidationError] = useState(undefined)
     }
   };
 
+  // event handlers for IKUpload: onError, onProgress, and onSuccess
   const onError = (err) => {
-    console.log('Error');
-    console.log(err);
-    alert("File could not be uploaded!")
-    setUploadProgress(0)
+    setUploadStatus('error');
+    setUploadProgress(0);
+    setIsUploading(false);
   };
   
   const onProgress = (e) => {
-    console.log(e)
     if (e.lengthComputable) {
       const progress = (e.loaded / e.total) * 100;
       setUploadProgress(progress);
+      setUploadStats({
+        loaded: e.loaded,
+        total: e.total
+      });
     }
   };
 
   const onSuccess = (res) => {
-    console.log('Success');
-    console.log(res);
-    setUploadProgress(0)
-    alert("File uploaded successfully")
+    setIsUploading(false);
+    setUploadStatus('success');
+    setUploadProgress(100);
   };
 
+  const resetUpload = () => {
+    setUploadProgress(0);
+    setUploadStatus(null);
+    setIsUploading(false);
+  };
+
+  const formatBytes = (bytes) => {
+    if (bytes === 0) return '0 KB';
+    const k = 1024;
+    return `${(bytes / k).toFixed(1)} KB`;
+  };
+ 
   const handleDragOver = (e) => {
     e.preventDefault();
     e.stopPropagation();
     setIsDragging(true);
   };
-
+ 
   const handleDragLeave = (e) => {
     e.preventDefault();
     e.stopPropagation();
     setIsDragging(false);
   };
-
+ 
+  // This function now calls 'uploadViaSdk' to trigger the "change" event on IKUpload
   const handleDrop = (e) => {
     e.preventDefault();
     e.stopPropagation();
@@ -98,6 +100,24 @@ const [fileValidationError, setFileValidationError] = useState(undefined)
 
     uploadViaIkSdk(e.dataTransfer.files)
   };
+
+  // This function now calls 'uploadViaSdk' to trigger the "change" event on IKUpload
+  useEffect(() => {
+    const handlePaste = (e) => {
+      e.preventDefault();
+      const files = e.clipboardData?.files;
+      
+      if (!files || files.length === 0) return;
+
+      uploadViaIkSdk(files)
+    };
+
+    window.addEventListener('paste', handlePaste);
+
+    return () => {
+      window.removeEventListener('paste', handlePaste);
+    };
+  }, []);
 
   // code to run the validations
   const validateFile = (file) => {
@@ -131,31 +151,26 @@ const [fileValidationError, setFileValidationError] = useState(undefined)
       urlEndpoint={process.env.NEXT_PUBLIC_URL_ENDPOINT}
       authenticator={authenticator} 
     >
+      {/* The <IKUpload> is internally simply an <input> file picker. But since we have our own three upload UI interfaces, ...
+      ... we hide the <IKUpload> element, and just reference it to manually trigger a “change“ event on it. */}
       <IKUpload
         onError={onError}
         onSuccess={onSuccess}
         onUploadProgress={onProgress}
+        // we use this ref to manually trigger the "change" event on this element
         ref={ikUploadRef}
         style={{visibility: 'hidden', height: 0, width: 0}} // hide the default button
         validateFile={validateFile}
       />
-      <div 
+      <div
         className={styles.page}
         onDragOver={handleDragOver}
         onDragLeave={handleDragLeave}
         onDrop={handleDrop}
       >
-        {uploadProgress > 0 && (
-          <div className={styles.progressContainer}>
-            <div 
-              className={styles.progressBar} 
-              style={{ width: `${uploadProgress}%` }}
-            />
-          </div>
-        )}
         {ikUploadRef && (
           <>
-            {isDragging && (
+            {isDragging && !isUploading && (
               <div className={styles.dropZone}>
                 <div className={styles.dropZoneContent}>
                   Drop your file here
@@ -163,7 +178,7 @@ const [fileValidationError, setFileValidationError] = useState(undefined)
               </div>
             )}
             <main className={styles.main}>
-              <div className={styles.uploadArea}>
+              <div className={`${styles.uploadArea} ${isUploading ? styles.disabled : ''} ${(uploadProgress > 0 || uploadStatus) ? styles.withProgress : ''}`}>
                 <p className={styles.uploadText}>
                   Drag and drop your file here<br />
                   <span>or</span>
@@ -171,18 +186,62 @@ const [fileValidationError, setFileValidationError] = useState(undefined)
                 <p className={styles.uploadHint}>
                   You can also paste files using Ctrl+V / Cmd+V
                 </p>
-                <label className={styles.fileInputLabel}>
-                  <input 
+                <label className={`${styles.fileInputLabel} ${isUploading ? styles.disabled : ''}`}>
+                  <input
                     type="file" 
+                    name="file"
+                    className={styles.fileInput}
+                    disabled={isUploading}
+                    // This function now calls 'uploadViaSdk' to trigger the "change" event on IKUpload
                     onChange={(e) => {
                       e.stopPropagation()
                       e.preventDefault()
                       uploadViaIkSdk(e.target.files)
                     }}
-                    className={styles.fileInput} 
                   />
                   Choose a file
                 </label>
+
+                {(uploadProgress > 0 || uploadStatus) && (
+                  <div className={styles.uploadProgress}>
+                    {uploadStatus ? (
+                      <div className={`${styles.uploadStatus} ${styles[uploadStatus]}`}>
+                        {uploadStatus === 'success' ? (
+                          <>
+                            <p>✓ Upload completed successfully!</p>
+                            <button type="button" className={styles.restartButton} onClick={resetUpload}>
+                              ↺ Upload another file
+                            </button>
+                          </>
+                        ) : (
+                          <>
+                            <p>✕ Upload failed. Please try again.</p>
+                            <button type="button" className={styles.restartButton} onClick={resetUpload}>
+                              ↺ Try again
+                            </button>
+                          </>
+                        )}
+                      </div>
+                    ) : (
+                      <>
+                        <div className={styles.uploadProgressHeader}>
+                          <div className={styles.fileIcon}>📄</div>
+                          <div>Uploading...</div>
+                        </div>
+                        <div className={styles.progressContainer}>
+                          <div 
+                            className={styles.progressBar} 
+                            style={{ width: `${uploadProgress}%` }}
+                          />
+                        </div>
+                        <div className={styles.progressStats}>
+                          <span>{formatBytes(uploadStats.loaded)} / {formatBytes(uploadStats.total)}</span>
+                          <span>{Math.round(uploadProgress)}%</span>
+                        </div>
+                      </>
+                    )}
+                  </div>
+                )}
               </div>
             </main>
           </>

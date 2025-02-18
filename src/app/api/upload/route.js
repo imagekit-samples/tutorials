@@ -52,28 +52,15 @@ export async function POST(request) {
 
     const bytes = await file.arrayBuffer();
     const buffer = Buffer.from(bytes);
-
-    // Create uploads directory if it doesn't exist
+ 
     const uploadDir = path.join(process.cwd(), 'public/uploads');
-    try {
-      await writeFile(path.join(uploadDir, filename), buffer);
-    } catch (err) {
-      if (err.code === 'ENOENT') {
-        return NextResponse.json(
-          { error: 'Upload directory does not exist.' },
-          { status: 500 }
-        );
-      }
-      throw err;
-    }
-
-    return NextResponse.json({ 
+    await writeFile(path.join(uploadDir, filename), buffer);
+ 
+    return NextResponse.json({
       message: 'File uploaded successfully!',
       filename: filename
     });
-
   } catch (error) {
-    console.error('Upload error:', error);
     return NextResponse.json(
       { error: 'Error uploading file.' },
       { status: 500 }
