@@ -1,0 +1,21 @@
+.home {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+  align-items: center;
+}
+
+.relative {
+  position: relative;
+}
+
+.dimension {
+  height: 200px;
+  width: 200px;
+}
+
+.large-dimension {
+  height: 300px;
+  width: 200px;
+}
