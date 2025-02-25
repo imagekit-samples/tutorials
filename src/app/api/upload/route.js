@@ -55,7 +55,7 @@ export async function POST(request) {
  
     const uploadDir = path.join(process.cwd(), 'public/uploads');
     // ensure the uploads directory exists
-    await mkdir(path.dirname(filePath), { recursive: true });
+    await mkdir(uploadDir, { recursive: true });
     await writeFile(path.join(uploadDir, filename), buffer);
  
     return NextResponse.json({
