@@ -66,6 +66,34 @@ export default function Home() {
           alt="Alt text"
         />
       </div>
+      <h2>Text overlay</h2>
+      <div className="relative dimension">
+        <IKImage
+          urlEndpoint={urlEndpoint}
+          path="/resize-crop-nextjs-blog/house.png"
+          transformation={[{ width: 200, height: 200 }, { raw: "l-text,i-Imagekit,fs-50,l-end" }]}
+          alt="Alt text"
+        />
+      </div>
+      <h2>AI transformations</h2>
+      <h3>Background removal</h3>
+      <div className="relative ai-dimension">
+        <IKImage
+          urlEndpoint={urlEndpoint}
+          src="https://ik.imagekit.io/ikmedia/blue-bmw.jpg"
+          transformation={[{ width: 400, height: 224 }, { raw: "e-removedotbg" }]}
+          alt="Alt text"
+        />
+      </div>
+      <h3>Add a drop shadow</h3>
+      <div className="relative ai-dimension">
+        <IKImage
+          urlEndpoint={urlEndpoint}
+          src="https://ik.imagekit.io/ikmedia/blue-bmw.jpg"
+          transformation={[{ width: 400, height: 224 }, { raw: "e-removedotbg" }, { raw: "e-dropshadow" }]}
+          alt="Alt text"
+        />
+      </div>
     </div>
   );
 }
