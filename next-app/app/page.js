@@ -76,23 +76,57 @@ export default function Home() {
         />
       </div>
       <h2>AI transformations</h2>
-      <h3>Background removal</h3>
-      <div className="relative ai-dimension">
-        <IKImage
-          urlEndpoint={urlEndpoint}
-          src="https://ik.imagekit.io/ikmedia/blue-bmw.jpg"
-          transformation={[{ width: 400, height: 224 }, { raw: "e-removedotbg" }]}
-          alt="Alt text"
-        />
+      <h3>Generative fill</h3>
+      <div className="ai-container">
+        <div>
+          <h4>Original image</h4>
+          <div className="relative generative-fill">
+            <IKImage
+              urlEndpoint={urlEndpoint}
+              src="https://ik.imagekit.io/ikmedia/footwear.jpg"
+              transformation={[{ width: 330, height: 320 }]}
+              alt="Alt text"
+            />
+          </div>
+        </div>
+        <div>
+          <h4>Transformed image</h4>
+          <div className="relative generative-fill">
+            <IKImage
+              urlEndpoint={urlEndpoint}
+              src="https://ik.imagekit.io/ikmedia/footwear.jpg"
+              fill={true}
+              transformation={[{ raw: "bg-genfill,w-1000,h-960,cm-pad_resize" }]}
+              alt="Alt text"
+            />
+          </div>
+        </div>
       </div>
-      <h3>Add a drop shadow</h3>
-      <div className="relative ai-dimension">
-        <IKImage
-          urlEndpoint={urlEndpoint}
-          src="https://ik.imagekit.io/ikmedia/blue-bmw.jpg"
-          transformation={[{ width: 400, height: 224 }, { raw: "e-removedotbg" }, { raw: "e-dropshadow" }]}
-          alt="Alt text"
-        />
+      <h3>Object aware cropping</h3>
+      <div className="ai-container">
+        <div>
+          <h4>Original image</h4>
+          <div className="relative original-cropped-image">
+            <IKImage
+              urlEndpoint={urlEndpoint}
+              src=" https://ik.imagekit.io/ikmedia/docs_images/features/image-transformations/catdog.jpeg"
+              transformation={[{ width: 602, height: 332 }]}
+              alt="Alt text"
+            />
+          </div>
+        </div>
+        <div>
+          <h4>Transformed image</h4>
+          <div className="relative object-aware-cropping">
+            <IKImage
+              urlEndpoint={urlEndpoint}
+              src="https://ik.imagekit.io/ikmedia/docs_images/features/image-transformations/catdog.jpeg"
+              fill={true}
+              transformation={[{ fo: "dog" }]}
+              alt="Alt text"
+            />
+          </div>
+        </div>
       </div>
     </div>
   );

@@ -20,7 +20,22 @@
   width: 200px;
 }
 
-.ai-dimension {
-  height: 224px;
-  width: 500px;
+.ai-container {
+  display: flex;
+  gap: 2rem;
+}
+
+.generative-fill {
+  height: 320px;
+  width: 330px;
+}
+
+.original-cropped-image {
+  width: 602px;
+  height: 336px;
+}
+
+.object-aware-cropping {
+  width: 294px;
+  height: 336px;
 }
