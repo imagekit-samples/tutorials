@@ -17,7 +17,7 @@ export default function Home() {
       <div style={{ position: "relative", width: "200px", height: "200px" }}>
         <Image alt="House" src={imageURL} fill={true} />
       </div>
-      <h2>Cropping and image</h2>
+      <h2>Cropped image</h2>
       <div style={{ width: "200px", height: "200px", overflow: "hidden", position: "relative" }}>
         <Image src={imageURL} alt="Cropped Example" width={300} height={300} />
       </div>
